@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="index.css" type="text/css">
+<title>Testing</title>
+<script src="socket.io.js"></script>
+
+
+
+<script src="index.js" type="text/javascript"></script>
+</head>
+<body onload="request();">
+    <div id="head">
+        <img src='img/logo.png'>
+        <h3 id="title">Arduino Fish</h3>
+        <p id='txt'>Envie e receba informações do seu Arduino conectado ao nosso servidor</p>    
+    </div>
+        <div id="campo">
+            <p>Seja bem vindo!</p>
+            <div id="ledBox">
+                LED
+                <div>
+                    <input type="button" id="bt1" onclick="changeButton('bt1');" value="Ligar" class='button' 
+s></input>
+                </div>
+                <div>
+                    <input type='button' id='bt2' onclick="changeButton('bt2')"value="Desligar" class='button'>
+                </div>
+            </div>
+            <div id="analogBox">
+                <div class="txtCampo">Porta analógica:</div>
+                <div>
+                    <input id="serialPort" type='button' value="Porta não encontrada" class="txtBox"></input>            
+                </div>
+                <div class="txtCampo">Envie um valor para a <br>porta analógica:</div>
+                <div>
+                    <input type='text' class="txtSend" placeholder="Valores entre 0 e 254" id="analogData"></input>
+                <div>
+                    <input type='button' id='btA' onclick="sendValue('analogData');clean('analogData');" value="Enviar" class='button'>
+                </div>
+                <div>
+                    <input onchange="sendValue('range')" id="range" type="range" class="range" min="0" max="254" value="0"></input>          
+                </div>
+            </div>
+        </div>
+</body>
+</html>
