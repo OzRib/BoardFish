@@ -50,7 +50,7 @@ const bodyProg = function(){
         })
         socket.on('emitAnalogData', function(data){
             byte=parseInt(data)/2;
-            data%2==1 ? byte1=(parseInt(data)/2)+2 : byte1=parseInt(data)/2;
+            data%2==1 ? byte1=(parseInt(data)/2)+1 : byte1=parseInt(data)/2;
             arduinoSended='a'+String.fromCharCode(byte,byte1);
             mySerial.write(arduinoSended);
             showData('Dado analógico enviado: "'+(byte+byte1)+'" PRIMITIVE VALUE: '+arduinoSended);
