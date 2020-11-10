@@ -32,7 +32,7 @@ function changeButton(id){
         dado='l';
     }else if(id=='bt2'){ 
         loadData('Desligado', id);
-        loadData('Ligar', "bt2");
+        loadData('Ligar', "bt1");
         dado='d';
     }
     sendDigitalData(dado);
