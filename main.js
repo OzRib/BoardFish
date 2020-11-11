@@ -1,6 +1,6 @@
 const ip = process.argv[2];
 const port = parseInt(process.argv[3]);
-//Requires ("Exports")
+//Requires ("Imports")
 const serialPort = require('serialport');
 const express = require('express');
 const socketIO = require('socket.io');

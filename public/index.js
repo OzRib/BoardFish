@@ -5,7 +5,7 @@ function loadData(val, id){
     document.getElementById(id).value=val;
 }
 //recebimento de dados
-const socket = io('http://10.0.0.103:3333');
+const socket = io('http://10.0.0.107:3333');
 function request(){
     socket.emit('request');
 }
@@ -19,11 +19,22 @@ socket.on('Serial:data', function(serial){
             loadData(serial, 'range');
             break;
         case 'd':
-            serial=="0"? loadData('Desligado', 'bt2'):loadData('Ligado', 'bt1'); 
-            break;    
+            atualButton(serial);
+            break;
     }
 })
 //Controle de botões
+function atualButton(On){
+    if(On==1){
+        loadData('Ligado', 'bt1');
+	loadData('Desligar', 'bt2');
+    }else{
+	loadData('Ligar', 'bt1');
+	loadData('Desligado', 'bt2');
+    }
+    console.log(On);
+    console.log(typeof(On));
+}
 function changeButton(id){
     var dado=null;
     if(id=='bt1'){
