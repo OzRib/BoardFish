@@ -5,7 +5,7 @@ function loadData(val, id){
     document.getElementById(id).value=val;
 }
 //recebimento de dados
-const socket = io('http://10.0.0.107:3333');
+const socket = io(window.location.href);
 function request(){
     socket.emit('request');
 }
