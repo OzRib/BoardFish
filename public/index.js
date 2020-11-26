@@ -25,7 +25,7 @@ socket.on('Serial:data', function(serial){
 })
 //Controle de botões
 function atualButton(On){
-    if(On==1){
+    if(On){
         loadData('Ligado', 'bt1');
 	loadData('Desligar', 'bt2');
     }else{
