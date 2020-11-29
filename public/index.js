@@ -1,3 +1,4 @@
+const linkServer = "https://10.0.0.107:3333/"
 function welcome(){
     alert('Bem vindo ao Arduino Fish! \n \nComo usar: \n\n    Use os botões verde e vermelho para ligar ou desligar, simultâneamente, o led da placa. \n\n    Use a caixa de texto para mandar uma velocidade para o motor. Valores não numéricos serão desprezados. Números quebrados serão arredondados.');
 }
@@ -5,7 +6,7 @@ function loadData(val, id){
     document.getElementById(id).value=val;
 }
 //recebimento de dados
-const socket = io(window.location.href);
+const socket = io(linkServer);
 function request(){
     socket.emit('request');
 }
