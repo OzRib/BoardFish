@@ -1,5 +1,6 @@
-const ip = process.argv[2];
-const port = parseInt(process.argv[3]);
+const netIp = "10.0.0.107";
+const netPort = "3333";
+const port = process.argv[2];
 //Requires ("Imports")
 const serialPort = require('serialport');
 const express = require('express');
@@ -14,7 +15,7 @@ const bodyProg = function(){
     app.get('/', (req, res, next) =>{
         res.sendFile(__dirname+'/public/index.html');
     })
-    server.listen(port,ip,() =>{
+    server.listen(netPort,netIp,() =>{
         console.log('Porta: '+server._connectionKey.slice(2));
     })
     const io = socketIO.listen(server);
@@ -39,7 +40,7 @@ const bodyProg = function(){
             console.clear();
             console.log('host: '+socket.handshake.headers.host+'\n\nDevices: '+socket.handshake.headers['user-agent']+'\n\nTime: '+socket.handshake.time+'\n\nUrl: '+socket.handshake.url+'\n\nIP: '+socket.handshake.address);    
             if(data!=undefined){
-                console.log(data);        
+                console.log(data);
             }
         }
         showData();
@@ -62,9 +63,9 @@ const bodyProg = function(){
     })
 }
 //Verificação de argumentos
-if(ip == "-h" || ip == "man"){
-    console.log("Menu de ajuda: \n\nPara operar corretamente o programa rode o programa como no exemplo: \n  node main.js <ip da sua máquina> <porta> \n\nVerifique se está no diretório do projeto \n\nNota, em alguns computadores as portas listadas abaixo não estão em funcionamento\n\n  [80, 123, 631, 68]");
-}else if(ip == undefined || port == undefined){
+if(port == "-h" || port == "man"){
+    console.log("Menu de ajuda: \n\nPara operar corretamente o programa rode o programa como no exemplo: \n  node main.js <portaSerial> \n\nVerifique se está no diretório do projeto \n");
+}else if(port == undefined){
     console.log('Por favor, preencha corretamente os argumentos pedidos. Tente rodar com "-h" ou "man" para obter ajuda');
 }else{
     bodyProg();
