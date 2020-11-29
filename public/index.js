@@ -1,7 +1,7 @@
 function welcome(){
     alert('Bem vindo ao Arduino Fish! \n \nComo usar: \n\n    Use os botões verde e vermelho para ligar ou desligar, simultâneamente, o led da placa. \n\n    Use a caixa de texto para mandar uma velocidade para o motor. Valores não numéricos serão desprezados. Números quebrados serão arredondados.');
 }
-function loadData(val, id){    
+function loadData(val, id){
     document.getElementById(id).value=val;
 }
 //recebimento de dados
@@ -11,7 +11,7 @@ function request(){
 }
 socket.on('Serial:data', function(serial){
     var serial=serial.value;
-    var val=serial[serial.length-1];
+    const val=serial[serial.length-1];
     serial=serial.slice(0, (serial.length-1));
     switch(val){
         case 'a':
@@ -25,12 +25,12 @@ socket.on('Serial:data', function(serial){
 })
 //Controle de botões
 function atualButton(On){
-    if(On){
+    if(On == "1"){
         loadData('Ligado', 'bt1');
-	loadData('Desligar', 'bt2');
+	    loadData('Desligar', 'bt2');
     }else{
-	loadData('Ligar', 'bt1');
-	loadData('Desligado', 'bt2');
+	    loadData('Ligar', 'bt1');
+	    loadData('Desligado', 'bt2');
     }
     console.log(On);
     console.log(typeof(On));
